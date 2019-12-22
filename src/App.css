@@ -1,0 +1,7 @@
+.message-container {
+  display: flex;
+}
+
+.message-container li {
+  margin-right: 2rem;
+}
