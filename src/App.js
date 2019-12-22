@@ -13,10 +13,19 @@ export default class App extends Component {
     componentDidMount() {
         // Create reference to messages in Firebase Database
         let messagesRef = fire.database().ref('messages').orderByKey().limitToLast(100);
+
+        // Subscribe to added child event and create front-end logic for that
         messagesRef.on('child_added', snapshot => {
             // Update React state when message is added at Firebase Database
             let message = { text: snapshot.val(), id: snapshot.key };
             this.setState({ messages: [message].concat(this.state.messages) });
+        });
+
+        // Subscribe to removed child event and create front-end logic for that
+        messagesRef.on('child_removed', snapshot => {
+            const { messages } = this.state;
+            const newMessages = messages.filter(message => message.id !== snapshot.key);
+            this.setState({ messages: newMessages });
         })
     }
 
@@ -36,9 +45,7 @@ export default class App extends Component {
         messageRef.remove()
             .then(() => {
                 // Delete the message from app state
-                const { messages } = this.state;
-                const newMessages = messages.filter(message => message.id !== messageId);
-                this.setState({ messages: newMessages });
+                console.log('Successfully deleted.')
             })
             .catch(() => console.log('There was a problem deleting this item.'))
     }
