@@ -1,0 +1,9 @@
+.post-container {
+    margin-bottom: 1.25rem;
+}
+
+/* Overriding Material UI styling */
+
+.MuiCardMedia-root {
+    height: 15rem;
+}

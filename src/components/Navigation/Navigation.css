@@ -1,0 +1,35 @@
+/*.nav-grid__container {*/
+/*    background-color: #b71c1c;*/
+/*}*/
+
+.nav-item {
+    align-items: center;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+}
+
+span {
+    color: #000;
+    font-size: .875rem;
+    font-weight: 600;
+}
+
+.brand-title {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+/* Overriding Material UI styling */
+
+.MuiGrid-root.MuiGrid-grid-xs-12 {
+    margin: 1rem 0;
+    justify-content: flex-end;
+}
+
+@media screen and (max-width: 960px) {
+    .MuiGrid-grid-xs-12 .MuiTextField-root {
+        width: 100%;
+    }
+}
