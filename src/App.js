@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import fire from './fire';
 import './App.css';
+import Navigation from "./components/Navigation/Navigation";
+import Grid from "@material-ui/core/Grid";
+import PostsSection from "./components/PostsSection/PostsSection";
 
 export default class App extends Component {
     constructor(props) {
@@ -69,16 +72,29 @@ export default class App extends Component {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.addMessage}>
-                    <input type="text" ref={ el => this.inputEl = el} />
-                    <input type="submit" />
-                </form>
-                <ul>
-                    {
-                        this.state.messages.map( message => this.renderMessage(message) )
-                    }
-                </ul>
+            <div className="main-container">
+                <Grid container justify="center">
+                    <Grid item xs={10}>
+                        <Navigation />
+                    </Grid>
+                </Grid>
+                <Grid container justify="center">
+                    <Grid
+                        item
+                        md={4}
+                        xs={10}>
+                        <PostsSection />
+                    </Grid>
+                </Grid>
+                {/*<form onSubmit={this.addMessage}>*/}
+                {/*    <input type="text" ref={ el => this.inputEl = el} />*/}
+                {/*    <input type="submit" />*/}
+                {/*</form>*/}
+                {/*<ul>*/}
+                {/*    {*/}
+                {/*        this.state.messages.map( message => this.renderMessage(message) )*/}
+                {/*    }*/}
+                {/*</ul>*/}
             </div>
         );
     }
