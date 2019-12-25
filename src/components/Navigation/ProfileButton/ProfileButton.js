@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
-import { IconButton } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import { Face } from "@material-ui/icons";
+import './ProfileButton.css';
 
 export default class ProfileButton extends Component {
     render() {
         return (
-            <IconButton
-                aria-label="profile"
+            <Button
+                variant="contained"
+                color="default"
+                startIcon={<Face />}
             >
-                <Face />
-            </IconButton>
+                My Corner
+            </Button>
         )
     }
 }
