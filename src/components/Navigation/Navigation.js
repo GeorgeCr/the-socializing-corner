@@ -3,6 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import Search from "./Search/Search";
 import './Navigation.css';
 import ProfileButton from "./ProfileButton/ProfileButton";
+import NewPost from "./NewPost/NewPost";
 
 export default class Navigation extends Component {
     render() {
@@ -16,8 +17,11 @@ export default class Navigation extends Component {
                         className="nav-item"
                         item
                     >
-                        <span>
+                        <span className="profile-button">
                             <ProfileButton />
+                        </span>
+                        <span className="new-post-button">
+                            <NewPost />
                         </span>
                     </Grid>
                     <Grid
@@ -34,7 +38,7 @@ export default class Navigation extends Component {
                         xs={12}
                         md={4}
                     >
-                        <Search />
+                        <Search passSearchTerm={(searchTerm) => this.props.passSearchTerm(searchTerm) } />
                     </Grid>
                 </Grid>
             </div>

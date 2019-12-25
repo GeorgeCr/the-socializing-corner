@@ -27,7 +27,7 @@ export default class Post extends Component {
                     <CardHeader
                         avatar={
                             <Avatar aria-label="recipe">
-                                {userName}
+                                {userName[0]}
                             </Avatar>
                         }
                         title={postTitle}
