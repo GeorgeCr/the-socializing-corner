@@ -1,0 +1,5 @@
+/* Override Material UI styling */
+
+.MuiButton-label {
+    text-transform: none;
+}

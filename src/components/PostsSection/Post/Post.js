@@ -12,26 +12,34 @@ import ShareIcon from '@material-ui/icons/Share';
 import './Post.css';
 
 export default class Post extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            postDetails: this.props.postDetails
+        }
+    }
+
     render() {
+        const { userName, postTitle, postImageUrl, date, postContent, postImageTitle } = this.props.postDetails;
         return (
             <div className="post-container">
                 <Card>
                     <CardHeader
                         avatar={
                             <Avatar aria-label="recipe">
-                                G
+                                {userName}
                             </Avatar>
                         }
-                        title="The new Tesla Model 3"
-                        subheader="December 23, 2019"
+                        title={postTitle}
+                        subheader={date}
                     />
                     <CardMedia
-                        image="https://www.tesla.com/sites/tesla/files/curatedmedia/model-s%402x.jpg"
-                        title="Cat photo"
+                        image={postImageUrl}
+                        title={postImageTitle}
                     />
                     <CardContent>
                         <Typography variant="body2" color="textSecondary" component="p">
-                            Tesla Model 3 is the best! hell yeah Elon Musk 😎😍
+                            {postContent}
                         </Typography>
                     </CardContent>
                     <CardActions>
