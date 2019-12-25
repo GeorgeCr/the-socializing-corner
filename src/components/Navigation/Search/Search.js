@@ -6,6 +6,7 @@ export default class Search extends Component {
     render() {
         return (
             <TextField
+                onChange={(event) => this.props.passSearchTerm(event.currentTarget.value)}
                 className="search-mobile"
                 placeholder="Search for posts, people..."
                 InputProps={{

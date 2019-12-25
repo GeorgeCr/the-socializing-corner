@@ -9,7 +9,8 @@ export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            posts: []
+            fromDbPosts: [],
+            fromSearchTermsPosts: []
         };
     }
 
@@ -22,9 +23,8 @@ export default class App extends Component {
         postsRef.on('value', snapshot => {
             // this.setState( { posts: snapshot.val() });
             const posts = Object.values(snapshot.val())
-            this.setState( { posts: posts } );
+            this.setState( { fromDbPosts: posts, fromSearchTermsPosts: posts} );
         })
-
         // Subscribe to added child event and create front-end logic for that
         // postsRef.on('child_added', snapshot => {
         //     // Update React state when message is added at Firebase Database
@@ -78,12 +78,25 @@ export default class App extends Component {
     //     )
     // }
 
+    getPostsBySearchTerm (searchTerm) {
+        const fromDbStatePosts = this.state.fromDbPosts.slice(0);
+        if (searchTerm === "") {
+            this.setState( { fromSearchTermsPosts: fromDbStatePosts });
+            return;
+        }
+        const fromSearchTermsPosts = fromDbStatePosts.filter(post => post.postContent.toLowerCase().indexOf(searchTerm) !== -1
+            || post.postTitle.toLowerCase().indexOf(searchTerm) !== -1
+            || post.postImageTitle.toLowerCase().indexOf(searchTerm) !== -1
+            || post.userName.toLowerCase().indexOf(searchTerm) !== -1);
+        this.setState( { fromSearchTermsPosts } );
+    }
+
     render() {
         return (
             <div className="main-container">
                 <Grid container justify="center">
                     <Grid item xs={10}>
-                        <Navigation />
+                        <Navigation passSearchTerm={(searchTerm) => this.getPostsBySearchTerm(searchTerm)} />
                     </Grid>
                 </Grid>
                 <Grid container justify="center">
@@ -91,7 +104,7 @@ export default class App extends Component {
                         item
                         md={4}
                         xs={10}>
-                        <PostsSection posts={this.state.posts} />
+                        <PostsSection posts={this.state.fromSearchTermsPosts} />
                     </Grid>
                 </Grid>
             </div>
