@@ -1,0 +1,9 @@
+.form-half {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+}
+
+.form-half > *:not(:last-child) {
+    margin-right: 1rem;
+}

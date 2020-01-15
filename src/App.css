@@ -1,3 +1,11 @@
 .main-container {
   margin-top: 1rem;
 }
+
+a:visited, a:link {
+  color: #000;
+}
+
+a {
+  text-decoration: none;
+}

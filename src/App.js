@@ -4,6 +4,8 @@ import './App.css';
 import Navigation from "./components/Navigation/Navigation";
 import Grid from "@material-ui/core/Grid";
 import PostsSection from "./components/PostsSection/PostsSection";
+import { BrowserRouter, Route } from "react-router-dom";
+import Profile from "./components/Navigation/ProfileButton/Profile/Profile";
 
 export default class App extends Component {
     constructor(props) {
@@ -93,21 +95,28 @@ export default class App extends Component {
 
     render() {
         return (
-            <div className="main-container">
-                <Grid container justify="center">
-                    <Grid item xs={10}>
-                        <Navigation passSearchTerm={(searchTerm) => this.getPostsBySearchTerm(searchTerm)} />
+            <BrowserRouter>
+                <div className="main-container">
+                    <Grid container justify="center">
+                        <Grid item xs={10}>
+                            <Navigation passSearchTerm={(searchTerm) => this.getPostsBySearchTerm(searchTerm)} />
+                        </Grid>
                     </Grid>
-                </Grid>
-                <Grid container justify="center">
-                    <Grid
-                        item
-                        md={4}
-                        xs={10}>
-                        <PostsSection posts={this.state.fromSearchTermsPosts} />
+                    <Grid container justify="center">
+                        <Grid
+                            item
+                            md={4}
+                            xs={10}>
+                                <Route exact path="/">
+                                    <PostsSection posts={this.state.fromSearchTermsPosts} />
+                                </Route>
+                                <Route exact path="/profile">
+                                    <Profile />
+                                </Route>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </div>
+                </div>
+            </BrowserRouter>
         );
     }
 }
