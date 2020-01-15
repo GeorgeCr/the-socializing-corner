@@ -24,12 +24,13 @@ export default function AlertDialogSlide() {
         setOpen(false);
     };
 
-    return (
-        <div>
+export default class NewPost extends Component {
+    render() {
+        return (
             <Button
                 variant="contained"
                 color="default"
-                startIcon={<PostAdd />}
+                startIcon={<PostAdd />}t
                 onClick={handleClickOpen}
 
             >
@@ -62,4 +63,5 @@ export default function AlertDialogSlide() {
             </Dialog>
         </div>
     );
+  }
 }
