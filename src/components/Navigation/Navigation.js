@@ -4,6 +4,7 @@ import Search from "./Search/Search";
 import './Navigation.css';
 import ProfileButton from "./ProfileButton/ProfileButton";
 import NewPost from "./NewPost/NewPost";
+import { Link } from "react-router-dom";
 
 export default class Navigation extends Component {
     render() {
@@ -29,7 +30,9 @@ export default class Navigation extends Component {
                         item
                     >
                         <span className="brand-title">
-                            Socializing Corner
+                            <Link to="/">
+                                 Socializing Corner
+                            </Link>
                         </span>
                     </Grid>
                     <Grid
